@@ -18,35 +18,43 @@ class Queue{
         }
         rear++;
         arr[rear]=val;
+        if(front==-1){                      //when element is added front=0
+            front=0;                
+        }
     }
 
     public int pop(){
-        front++;
-        return arr[front];
+        int element=arr[front];
+        if(front==rear){
+            front=rear=-1;           //there is only one element in the queue.
+        }else{
+            front++;
+        }
+        return element;
     }
 
     public int peek(){
         if(isEmpty()){
-            System.out.println("The queue is empty");
+            System.out.println("The queue is empty");   //check whether the elements are there or not
             return -1;
         }
-        return arr[front+1];
+        return arr[front];
     }
 
     public boolean isFull(){
-        return rear==arr.length-1;
+        return rear==arr.length-1;       //rear=size-1
     }
 
     public boolean isEmpty(){
-        return rear==front;
+        return front==-1 || front>rear;            //front==rear(when only one element) front>rear(queue is empty)
     }
 
     public void display(){
-        if(rear==front){
+        if(isEmpty()){
             System.out.println("The queue is Empty");
             return;
         }else{
-            for(int i=front+1;i<=rear;i++){
+            for(int i=front;i<=rear;i++){
                 System.out.println(arr[i]);
             }
         }
