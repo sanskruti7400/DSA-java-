@@ -2,7 +2,8 @@ import java.util.Scanner;
 
 public class BinaryRecurssive{
      public static int binaryRecurssive(int l,int r,int arr[],int target){
-        if(l>r){
+        if(l>r)
+        {
             return -1;
         }
         int mid=l+(r-l)/2;
